@@ -1,6 +1,6 @@
 <ul>
   <% @members.each do |member| %>
-    <li><%= member.name %></li>
+    <li><%= link_to member.name, member_path(member) %></li>
   <% end %>
 </ul>
 
