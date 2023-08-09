@@ -1,0 +1,7 @@
+<ul>
+  <% @members.each do |member| %>
+    <li><%= link_to member.name, member_path(member) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "+ member", new_member_path %>
