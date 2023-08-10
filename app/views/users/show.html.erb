@@ -1,7 +1,7 @@
 <%= @user.email %>
 <% @user.members.each do |member| %>
   <ul>
-    <li><%= link_to member.name, member_path(member) %></li>
+    <li><%= link_to member.name, user_member_path(@user, member) %></li>
   </ul>
 <% end %>
-<%= link_to "+ member", new_member_path %>
+<%= link_to "+ member", new_user_member_path(@user) %>

@@ -1,4 +1,4 @@
-<%= simple_form_for @member do |f| %>
+<%= simple_form_for [@user, @member] do |f| %>
   <%= f.input :name %>
   <%= f.input :is_pet, label: "Is this member a pet?" %>
   <%= f.button :submit %>
