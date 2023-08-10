@@ -5,6 +5,7 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    @events = Event.where(member_id: @member)
   end
 
   def new

@@ -15,7 +15,9 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    # used member id to find the event as member id and id are inverted on the url
+    @event = Event.find(params[:member_id])
+
   end
 
   private
