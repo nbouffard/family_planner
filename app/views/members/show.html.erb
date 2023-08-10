@@ -4,5 +4,5 @@
 <%= @member.name %>
 <%= link_to 'Add event', new_user_member_event_path(@user, @member) %>
 <% @member.events.each do |event| %>
-  <li><%= link_to event.title, user_member_event_path(@user, event) %></li>
+  <li><%= link_to event.title, user_member_event_path(@user, @member, event) %></li>
 <% end %>

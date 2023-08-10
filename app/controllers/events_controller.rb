@@ -8,9 +8,9 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @user = params[:user_id]
+    @event.member = params[:member_id]
     @member = params[:member_id]
-    @event.member_id = params[:member_id]
+    @user = params[:user_id]
     authorize @event
     if @event.save
       redirect_to user_member_event_path(@user, @member, @event), notice: 'Event created successfully'
