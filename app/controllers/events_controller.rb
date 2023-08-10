@@ -8,12 +8,12 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.member = params[:member_id]
-    @member = params[:member_id]
+    @event.member = Member.find(params[:member_id])
+    # @member = params[:member_id]
     @user = params[:user_id]
     authorize @event
     if @event.save
-      redirect_to user_member_event_path(@user, @member, @event), notice: 'Event created successfully'
+      redirect_to user_member_event_path(@user, @event.member, @event), notice: 'Event created successfully'
     else
       render :new, alert: 'Event not created'
     end
