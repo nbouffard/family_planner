@@ -2,3 +2,7 @@
 <h1>Pet member</h1>
 <% end %>
 <%= @member.name %>
+<%= link_to 'Add event', new_member_event_path(@member) %>
+<% @events.each do |event| %>
+  <li><%= link_to event.title, member_event_path(event) %></li>
+<% end %>

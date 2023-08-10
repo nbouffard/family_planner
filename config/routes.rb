@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show] do
   end
 
-  resources :members, only: %i[new show create]
+  resources :members, only: %i[new show create] do
+    resources :events, only: %i[new create show]
+  end
   root to: 'pages#home'
 end

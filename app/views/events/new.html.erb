@@ -1,0 +1,11 @@
+<h1>hello</h1>
+<%= simple_form_for [@member, @event] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :time %>
+  <%= f.input :date %>
+  <%= f.input :address %>
+  <%= f.input :vaccination %>
+  <%= f.input :flea_treatment %>
+  <%= f.input :worm_treatment %>
+  <%= f.button :submit %>
+<% end %>

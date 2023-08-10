@@ -1,1 +1,8 @@
 <h1>Welcome</h1>
+<% if user_signed_in? %>
+  <%= button_to 'sign_out', destroy_user_session_path, method: :delete %>
+  <%= link_to 'members', user_path(current_user) %>
+<% else %>
+  <%= link_to 'sign_in', new_user_session_path %>
+  <%= link_to 'sign_up', new_user_registration_path %>
+<% end %>
