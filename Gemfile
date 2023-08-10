@@ -22,6 +22,8 @@ gem 'devise'
 
 gem 'simple_form'
 
+gem "pundit"
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
