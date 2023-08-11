@@ -6,3 +6,5 @@
 <% @member.events.each do |event| %>
   <li><%= link_to event.title, user_member_event_path(@user, @member, event) %></li>
 <% end %>
+
+<%= link_to 'delete member', user_member_path(@user, @member), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
