@@ -17,4 +17,8 @@ class EventPolicy < ApplicationPolicy
   def show?
     user && record.member.user == user
   end
+
+  def destroy?
+    user && record.member.user == user
+  end
 end
