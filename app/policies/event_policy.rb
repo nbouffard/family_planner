@@ -11,7 +11,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    user && record.member.user == user
   end
 
   def show?

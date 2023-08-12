@@ -8,3 +8,5 @@
 <% end %>
 
 <%= link_to 'delete member', user_member_path(@user, @member), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+
+<%= link_to 'add note', new_user_member_note_path(@user, @member, @note) %>
