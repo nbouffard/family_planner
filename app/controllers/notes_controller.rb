@@ -14,17 +14,19 @@ class NotesController < ApplicationController
   end
 
   def create
-    @noteable = noteable_object
+    # @noteable = noteable_object
     @user = User.find(params[:user_id])
     @member = Member.find(params[:member_id])
-    Rails.logger.debug "Noteable: #{@noteable}"
-  Rails.logger.debug "User: #{@user}"
-  Rails.logger.debug "Member: #{@member}"
+    if params[:event_id]
+      @noteable = Event.find(params[:event_id])
+      noteable_type = 'Event'
+    else
+      @noteable = @member
+      noteable_type = 'Member'
+    end
     @note = @noteable.notes.new(notes_params)
-    # if @note.noteable.event
-    #   @note.member = @member
-    # end
     @note.user = current_user
+    @note.noteable_type = noteable_type
     authorize @note
     if @note.save
       redirect_to user_member_path(@user, @member), notice: 'Note successfully created'
@@ -33,6 +35,29 @@ class NotesController < ApplicationController
     end
   end
 
+  # def create
+  #   @user = User.find(params[:user_id])
+  #   @member = Member.find(params[:member_id])
+
+  #   if params[:event_id]
+  #     @member = Member.find(params[:member_id])
+  #     @event = @member.events.find(params[:event_id]) # Fetch the event using event_id
+  #     @noteable = @event # Set the noteable to the event
+  #   else
+  #     @noteable = @member # Set the noteable to the member
+  #   end
+
+  #   @note = @noteable.notes.new(notes_params)
+  #   @note.user = current_user
+  #   authorize @note
+
+  #   if @note.save
+  #     redirect_to user_member_path(@user, @member), notice: 'Note successfully created'
+  #   else
+  #     render :new, alert: "Error: Note could not be created"
+  #   end
+  # end
+
   private
 
   def notes_params
@@ -40,7 +65,8 @@ class NotesController < ApplicationController
   end
 
   def noteable_object
-    if params[:member_id] && params[:event_id]
+    # raise
+    if params[:event_id]
       Event.find(params[:event_id])
     elsif params[:member_id]
       Member.find(params[:member_id])
