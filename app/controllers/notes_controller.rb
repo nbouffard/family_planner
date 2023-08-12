@@ -12,11 +12,12 @@ class NotesController < ApplicationController
     @user = User.find(params[:user_id])
     @member = Member.find(params[:member_id])
     @note = @noteable.notes.new(notes_params)
+    @note.user = current_user
     authorize @note
     if @note.save
-      redirect_to @noteable, notice: 'Note successfully created'
+      redirect_to user_member_path(@user, @member), notice: 'Note successfully created'
     else
-      redirect_to @noteable, alert: "Error: Note could not be created"
+      render :new, alert: "Error: Note could not be created"
     end
   end
 
