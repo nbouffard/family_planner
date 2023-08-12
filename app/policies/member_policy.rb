@@ -16,4 +16,8 @@ class MemberPolicy < ApplicationPolicy
   def create?
     user.present?
   end
+
+  def destroy?
+    user.present? && user == record.user
+  end
 end

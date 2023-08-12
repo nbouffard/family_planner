@@ -27,6 +27,15 @@ class EventsController < ApplicationController
     authorize @event
   end
 
+  def destroy
+    @event = Event.find(params[:id])
+    @user = User.find(params[:user_id])
+    @member = Member.find(params[:member_id])
+    authorize @event
+    @event.destroy
+    redirect_to user_member_path(@user, @member), notice: 'Event successfully deleted'
+  end
+
   private
 
   def event_params
