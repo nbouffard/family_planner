@@ -15,7 +15,7 @@ class NotePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user && record.noteable.user == user
+    create?
 
   end
 end
