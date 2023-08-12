@@ -40,6 +40,7 @@ class NotesController < ApplicationController
     else
       @note = @member.notes.find(params[:id])
     end
+    authorize @note
     @note.destroy
     redirect_to root_path, notice: 'Note successfully deleted'
   end
