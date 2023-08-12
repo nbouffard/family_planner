@@ -11,6 +11,6 @@ class NotePolicy < ApplicationPolicy
   end
 
   def create?
-    user && record.noteable.user == user
+    record.noteable.instance_of?(Event) ? user && record.noteable.member.user_id == user.id : user && record.noteable.user == user
   end
 end

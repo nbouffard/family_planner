@@ -1,7 +1,13 @@
 class NotesController < ApplicationController
   def new
-    @user = User.find(params[:user_id])
-    @member = Member.find(params[:member_id])
+    if params[:event_id]
+      @event = Event.find(params[:event_id])
+      @user = User.find(params[:user_id])
+      @member = Member.find(params[:member_id])
+    else
+      @user = User.find(params[:user_id])
+      @member = Member.find(params[:member_id])
+    end
     @noteable = noteable_object
     @note = @noteable.notes.new()
     authorize @note
@@ -11,7 +17,13 @@ class NotesController < ApplicationController
     @noteable = noteable_object
     @user = User.find(params[:user_id])
     @member = Member.find(params[:member_id])
+    Rails.logger.debug "Noteable: #{@noteable}"
+  Rails.logger.debug "User: #{@user}"
+  Rails.logger.debug "Member: #{@member}"
     @note = @noteable.notes.new(notes_params)
+    # if @note.noteable.event
+    #   @note.member = @member
+    # end
     @note.user = current_user
     authorize @note
     if @note.save
@@ -28,10 +40,10 @@ class NotesController < ApplicationController
   end
 
   def noteable_object
-    if params[:member_id]
-      Member.find(params[:member_id])
-    elsif params[:event_id]
+    if params[:member_id] && params[:event_id]
       Event.find(params[:event_id])
+    elsif params[:member_id]
+      Member.find(params[:member_id])
     end
   end
 end
