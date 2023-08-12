@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :users, only: %i[show] do
     resources :members, only: %i[show new create destroy] do
-      resources :notes, only: %i[new create]
+      resources :notes, only: %i[new create destroy]
       resources :events, only: %i[show new create destroy] do
-        resources :notes, only: %i[new create]
+        resources :notes, only: %i[new create destroy]
       end
     end
   end

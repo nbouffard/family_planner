@@ -14,4 +14,5 @@
 <% @member.notes.each do |note| %>
   <p><%= note.comment %></p>
   <p><%= note.noteable_type %></p>
+  <%= link_to 'delete note', user_member_note_path(@user, @member, note), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
 <% end %>
