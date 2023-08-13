@@ -2,6 +2,9 @@
 <% @user.members.each do |member| %>
   <ul>
     <li><%= link_to member.name, user_member_path(@user, member) %></li>
+    <% if member.photo.attached? %>
+      <%= cl_image_tag member.photo.key, height: 200, width: 200 %>
+    <% end %>
   </ul>
 <% end %>
 <%= link_to "+ member", new_user_member_path(@user) %>
