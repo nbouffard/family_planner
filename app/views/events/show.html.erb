@@ -7,3 +7,9 @@
   <p><%= note.comment %></p>
   <p><%= link_to "delete note", user_member_event_note_path(@user, @member, @event, note), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></p>
 <% end %>
+
+<% if @event.photos.attached? %>
+  <% @event.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 200, width: 200 %>
+  <% end %>
+<% end %>

@@ -16,3 +16,7 @@
   <p><%= note.noteable_type %></p>
   <%= link_to 'delete note', user_member_note_path(@user, @member, note), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
 <% end %>
+
+<% if @member.photo.attached? %>
+  <%= cl_image_tag @member.photo.key, height: 200, width: 200 %>
+<% end %>
