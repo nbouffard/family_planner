@@ -34,7 +34,7 @@ class MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:name, :is_pet)
+    params.require(:member).permit(:name, :is_pet, :photo)
   end
 
   def set_user
