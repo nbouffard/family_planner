@@ -26,8 +26,8 @@ class EventsController < ApplicationController
     @member = Member.find(params[:member_id])
     authorize @event
     @marker = {
-      lat: @event.geocoded.latitude,
-      lng: @event.geocoded.longitude
+      lat: @event.latitude,
+      lng: @event.longitude
     }
   end
 
