@@ -26,6 +26,8 @@ gem "pundit"
 
 gem "cloudinary"
 
+gem "geocoder"
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
