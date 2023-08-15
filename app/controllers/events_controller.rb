@@ -25,6 +25,10 @@ class EventsController < ApplicationController
     @user = User.find(params[:user_id])
     @member = Member.find(params[:member_id])
     authorize @event
+    @marker = {
+      lat: @event.geocoded.latitude,
+      lng: @event.geocoded.longitude
+    }
   end
 
   def destroy
