@@ -28,6 +28,8 @@ gem "cloudinary"
 
 gem "geocoder"
 
+gem "bootstrap", "~> 5.3.1"
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
