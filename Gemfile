@@ -28,9 +28,12 @@ gem "cloudinary"
 
 gem "geocoder"
 
-gem "bootstrap", "~> 5.3.1"
+# gem "bootstrap", "~> 5.3.1"
 
-gem "sassc-rails"
+# gem "sassc-rails"
+
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'sassc-rails', '>= 2.1.0'
 
 gem 'jquery-rails'
 
