@@ -13,3 +13,10 @@
     <%= cl_image_tag photo.key, height: 200, width: 200 %>
   <% end %>
 <% end %>
+
+<% if @event.geocode %>
+  <div style="width: 50%; height: 300px;"
+    data-controller="map"
+    data-map-marker-value="<%= @marker.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<% end %>
