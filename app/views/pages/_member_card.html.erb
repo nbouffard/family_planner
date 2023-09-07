@@ -1,0 +1,5 @@
+<div class="card-container">
+  <% if member.photos? %>
+    <%= cl_image_tag member.photo.key %>
+  <% end %>
+</div>
