@@ -30,6 +30,8 @@ gem "geocoder"
 
 gem "bootstrap", "~> 5.3.1"
 
+gem "sassc-rails"
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
