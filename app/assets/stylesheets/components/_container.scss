@@ -1,0 +1,47 @@
+.home-container{
+  background-color: #E3F4F4;
+  height: 7000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.center-page{
+  width: 90%;
+  margin: 0 auto;
+}
+
+mark {
+  background-color: #C4DFDF;
+}
+
+mark:hover{
+  background-color: yellowgreen;
+}
+
+.home-container h1 {
+  text-align: center;
+  margin-top: 0;
+  padding-top: 50px;
+}
+
+.card-img {
+  height: 90%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-info {
+  height: 10%;
+  background-color: #D2E9E9;
+}
+.card-container {
+  height: 400px;
+  width: 300px;
+  border: 1px solid black;
+  margin: 20px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
