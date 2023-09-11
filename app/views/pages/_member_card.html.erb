@@ -1,5 +1,10 @@
 <div class="card-container">
-  <% if member.photos? %>
-    <%= cl_image_tag member.photo.key %>
+  <% if member.photo.attached? %>
+    <%= cl_image_tag member.photo.key, class: 'card-img' %>
+  <% else %>
+    <%= image_tag("sharon-pittaway-iMdsjoiftZo-unsplash.jpg", class: 'card-img') %>
   <% end %>
+  <div class="card-info">
+    <%= member.name %>
+  </div>
 </div>

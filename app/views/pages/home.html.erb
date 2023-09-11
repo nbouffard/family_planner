@@ -1,22 +1,21 @@
 <div class="home-container">
-  <% if user_signed_in? %>
-    <div class="banner">
-      <h1><mark>Welcome back <%= current_user.email %></mark></h1>
-    </div>
-    <%= button_to 'sign_out', destroy_user_session_path, method: :delete, class: 'btn btn-success' %>
-    <%= link_to 'members', user_path(current_user), class: 'link-opacity-50-hover' %>
-    <% current_user.members.each do |member| %>
-      <%= link_to user_member_path(current_user, member) do %>
-        <li>
-          <% if member.photo.attached? %>
-            <%= cl_image_tag member.photo.key, height: 100, width: 100  %>
+  <div class="center-page">
+    <% if user_signed_in? %>
+      <div class="banner">
+        <h1><mark>Welcome back <%= current_user.email %></mark></h1>
+      </div>
+      <%= button_to 'sign_out', destroy_user_session_path, method: :delete, class: 'btn btn-success' %>
+      <%= link_to 'members', user_path(current_user), class: 'link-opacity-50-hover' %>
+      <div class="card-grid">
+        <% current_user.members.each do |member| %>
+          <%= link_to user_member_path(current_user, member) do %>
+            <%= render partial: 'member_card', locals: {member: member} %>
           <% end %>
-          <%= member.name %>
         <% end %>
-        </li>
-      <% end %>
-  <% else %>
-    <%= link_to 'sign_in', new_user_session_path, class: 'link-opacity-50-hover' %>
-    <%= link_to 'sign_up', new_user_registration_path, class: 'link-opacity-50-hover' %>
-  <% end %>
+      </div>
+    <% else %>
+      <%= link_to 'sign_in', new_user_session_path, class: 'link-opacity-50-hover' %>
+      <%= link_to 'sign_up', new_user_registration_path, class: 'link-opacity-50-hover' %>
+    <% end %>
+  </div>
 </div>
